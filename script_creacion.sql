@@ -33,30 +33,29 @@ CREATE TABLE IF NOT EXISTS libro(
 	libro_titulo VARCHAR(50)  NOT NULL,
 	libro_autor VARCHAR(50)  NOT NULL,
 	libro_cantidad INT  NOT NULL,
-    libro_precio INT  NOT NULL,
+	libro_precio INT  NOT NULL,
 	PRIMARY KEY(libro_id)
 );
 
 CREATE TABLE IF NOT EXISTS prestamo(
 	prestamo_id INT  NOT NULL,
-    prestamo_fecha DATE NOT NULL,
-    prestamo_fecha_devolucion DATE NOT NULL,
-    prestamo_fecha_maxima DATE NOT NULL,
-    libro_id INT  NOT NULL,
-    cliente_id INT  NOT NULL,
-	-- KEY `fk_prestamo_id_libro` (`libro_id`),
-    constraint `fk_prestamo_libro_id` FOREIGN KEY (`libro_id`) REFERENCES `libro`(`libro_id`),
-     constraint `fk_prestamo_cliente_id` FOREIGN KEY (`cliente_id`) REFERENCES `cliente`(`cliente_id`),
+    	prestamo_fecha DATE NOT NULL,
+	prestamo_fecha_devolucion DATE NOT NULL,
+	prestamo_fecha_maxima DATE NOT NULL,
+	libro_id INT  NOT NULL,
+	cliente_id INT  NOT NULL,
+	constraint `fk_prestamo_libro_id` FOREIGN KEY (`libro_id`) REFERENCES `libro`(`libro_id`),
+	constraint `fk_prestamo_cliente_id` FOREIGN KEY (`cliente_id`) REFERENCES `cliente`(`cliente_id`),
 	PRIMARY KEY(prestamo_id)
 );
 
 CREATE TABLE IF NOT EXISTS venta(
 	venta_id INT  NOT NULL,
-    venta_fecha DATE NOT NULL,
-    venta_monto INT  NOT NULL,
-    vendedor_id INT  NOT NULL,
-    libro_id INT  NOT NULL,
-    constraint `fk_venta_libro_id` FOREIGN KEY (`libro_id`) REFERENCES `libro`(`libro_id`),
+	venta_fecha DATE NOT NULL,
+	venta_monto INT  NOT NULL,
+	vendedor_id INT  NOT NULL,
+	libro_id INT  NOT NULL,
+	constraint `fk_venta_libro_id` FOREIGN KEY (`libro_id`) REFERENCES `libro`(`libro_id`),
 	constraint `fk_venta_vendedor_id` FOREIGN KEY (`vendedor_id`) REFERENCES `vendedor`(`vendedor_id`),
 	PRIMARY KEY(venta_id)
 );
